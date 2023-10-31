@@ -9,7 +9,7 @@ type Facer interface{
 type FaceRight struct{}
 
 func (fr *FaceRight) face(facing *event.Facing){
-	if facing.Direction() == 4{
+	if facing.Direction() == event.West{
 		facing.FirstDirection()
 	}else{
 		facing.PlusDirection()
@@ -19,9 +19,13 @@ func (fr *FaceRight) face(facing *event.Facing){
 type FaceLeft struct{}
 
 func (fl *FaceLeft) face(facing *event.Facing){
-	if facing.Direction() == 1{
+	if facing.Direction() == event.North{
 		facing.LastDirection()
 	}else{
 		facing.MinusDirection()
 	}
+}
+
+func IsFacingCommand(cmd string) bool{
+	return cmd == "R" || cmd == "L"
 }

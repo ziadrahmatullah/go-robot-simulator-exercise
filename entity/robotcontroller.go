@@ -1,6 +1,8 @@
 package entity
 
-import "git.garena.com/sea-labs-id/bootcamp/batch-02/ziad-rahmatullah/go-robot-simulator-exercise/event"
+import (
+	"git.garena.com/sea-labs-id/bootcamp/batch-02/ziad-rahmatullah/go-robot-simulator-exercise/event"
+)
 
 type RobotController struct{
 	robot *Robot
@@ -13,12 +15,45 @@ func NewRobotController(xAxis, yAxis int, face string) *RobotController{
 	return &RobotController{robot: newRobot}
 }
 
-func (rc *RobotController) Face(facing Facer){
+func (rc *RobotController) face(facing Facer){
 	rc.facing = facing
 	rc.facing.face(rc.robot.facing)
 }
 
-func (rc *RobotController) Move(moving Mover){
+func (rc *RobotController) move(moving Mover){
 	rc.moving = moving
 	rc.moving.move(rc.robot)
 }
+
+func (rc *RobotController) doCommand(cmd string){
+	if IsFacingCommand(cmd){
+		if cmd == "R"{
+			rc.face(&FaceRight{})
+		}else if cmd == "L"{
+			rc.face(&FaceLeft{})
+		}
+	}else if IsMoveCommand(cmd){
+		if cmd == "A"{
+			rc.move(&MoveAdvance{})
+		}
+	}
+}
+
+func (rc *RobotController) MovementsCommand(moves string)(xAxis, yAxis int, face string) {
+	for _, move := range moves {
+		rc.doCommand(string(move))
+	}
+	switch rc.robot.facing.Direction(){
+	case 1:
+		face = "N"
+	case 2:
+		face = "E"
+	case 3:
+		face = "S"
+	case 4:
+		face = "W"
+	}
+	return rc.robot.coordinate.XAxis(), rc.robot.coordinate.YAxis(), face
+}
+
+

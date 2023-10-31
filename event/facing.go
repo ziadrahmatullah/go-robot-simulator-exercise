@@ -4,16 +4,23 @@ type Facing struct {
 	direction int
 }
 
+const(
+	North = iota +1
+	East
+	South
+	West
+)
+
 func NewFacing(direction string) *Facing{
 	switch direction{
 	case "N":
-		return &Facing{direction: 1}
+		return &Facing{direction: North}
 	case "E":
-		return &Facing{direction: 2}
+		return &Facing{direction: East}
 	case "S":
-		return &Facing{direction: 3}
+		return &Facing{direction: South}
 	case "W":
-		return &Facing{direction: 4}
+		return &Facing{direction: West}
 	default:
 		return nil
 	}
@@ -38,3 +45,5 @@ func (f *Facing) FirstDirection() {
 func (f *Facing) LastDirection() {
 	f.direction = 4
 }
+
+

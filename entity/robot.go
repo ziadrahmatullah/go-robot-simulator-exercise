@@ -16,9 +16,9 @@ func NewRobot(coordinate *event.Cordinates, facing *event.Facing) *Robot {
 // 	r.yAxis = yAxis
 // }
 
-func (r *Robot) Face() *event.Facing{
-	return r.facing
-}
+// func (r *Robot) Face() *event.Facing{
+// 	return r.facing
+// }
 
 // func (r *Robot) Move(movement event.Movement) {
 // 	r.moving.move(movement)

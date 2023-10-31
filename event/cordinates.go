@@ -8,12 +8,20 @@ func NewCordinate(xAxis, yAxis int)*Cordinates{
 	return &Cordinates{xAxis: xAxis, yAxis: yAxis}
 }
 
+func (c *Cordinates) XAxis()int{
+	return c.xAxis
+}
+
+func (c *Cordinates) YAxis() int{
+	return c.yAxis
+}
+
 func (c *Cordinates) XCordinatePlus(){
 	c.xAxis++
 }
 
 func (c *Cordinates) YCordinatePlus(){
-	c.xAxis++
+	c.yAxis++
 }
 
 func (c *Cordinates) XCordinateMinus(){
@@ -21,7 +29,7 @@ func (c *Cordinates) XCordinateMinus(){
 }
 
 func (c *Cordinates) YCordinateMinus(){
-	c.xAxis--
+	c.yAxis--
 }
 
 
