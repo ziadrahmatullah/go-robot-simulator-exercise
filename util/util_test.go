@@ -20,3 +20,37 @@ func TestIsInitialPositionValid(t *testing.T) {
 		assert.Equal(t, expected4, face)
 	})
 }
+
+func TestIsMoveValid(t *testing.T) {
+	t.Run("should return true when input RRL", func(t *testing.T) {
+		input := "RRL"
+		expected := true
+
+		result := util.IsMovesValid(input)
+
+		assert.Equal(t, expected, result)
+	})
+}
+
+func TestIsMoveCommand(t *testing.T) {
+	t.Run("should return true when input A", func(t *testing.T) {
+		input := "A"
+		expected := true
+
+		result := util.IsMoveCommand(input)
+
+		assert.Equal(t, expected, result)
+	})
+}
+
+func TestIsFacingCommand(t *testing.T) {
+	t.Run("should return true when input R", func(t *testing.T) {
+		input := "R"
+		expected := true
+
+		result := util.IsFacingCommand(input)
+
+		assert.Equal(t, expected, result)
+	})
+}
+

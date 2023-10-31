@@ -3,12 +3,12 @@ package entity
 import "git.garena.com/sea-labs-id/bootcamp/batch-02/ziad-rahmatullah/go-robot-simulator-exercise/event"
 
 type Mover interface{
-	move(*Robot)
+	Move(*Robot)
 }
 
 type MoveAdvance struct{}
 
-func (ma *MoveAdvance) move(robot *Robot){
+func (ma *MoveAdvance) Move(robot *Robot){
 	switch robot.facing.Direction() {
 	case event.North:
 		robot.coordinate.YCordinatePlus()
@@ -20,8 +20,4 @@ func (ma *MoveAdvance) move(robot *Robot){
 		robot.coordinate.XCordinateMinus()
 	default:
 	}
-}
-
-func IsMoveCommand(cmd string) bool{
-	return cmd == "A"
 }

@@ -6,6 +6,14 @@ import (
 	"strings"
 )
 
+func IsMoveCommand(cmd string) bool{
+	return cmd == "A"
+}
+
+func IsFacingCommand(cmd string) bool{
+	return cmd == "R" || cmd == "L"
+}
+
 func IsMovesValid(moves string) bool {
 	valid := regexp.MustCompile(`^[RLA]+$`)
 	return valid.MatchString(moves)

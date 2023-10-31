@@ -3,12 +3,12 @@ package entity
 import "git.garena.com/sea-labs-id/bootcamp/batch-02/ziad-rahmatullah/go-robot-simulator-exercise/event"
 
 type Facer interface{
-	face(*event.Facing)
+	Face(*event.Facing)
 }
 
 type FaceRight struct{}
 
-func (fr *FaceRight) face(facing *event.Facing){
+func (fr *FaceRight) Face(facing *event.Facing){
 	if facing.Direction() == event.West{
 		facing.FirstDirection()
 	}else{
@@ -18,7 +18,7 @@ func (fr *FaceRight) face(facing *event.Facing){
 
 type FaceLeft struct{}
 
-func (fl *FaceLeft) face(facing *event.Facing){
+func (fl *FaceLeft) Face(facing *event.Facing){
 	if facing.Direction() == event.North{
 		facing.LastDirection()
 	}else{
@@ -26,6 +26,4 @@ func (fl *FaceLeft) face(facing *event.Facing){
 	}
 }
 
-func IsFacingCommand(cmd string) bool{
-	return cmd == "R" || cmd == "L"
-}
+

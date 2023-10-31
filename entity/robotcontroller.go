@@ -2,6 +2,7 @@ package entity
 
 import (
 	"git.garena.com/sea-labs-id/bootcamp/batch-02/ziad-rahmatullah/go-robot-simulator-exercise/event"
+	"git.garena.com/sea-labs-id/bootcamp/batch-02/ziad-rahmatullah/go-robot-simulator-exercise/util"
 )
 
 type RobotController struct{
@@ -15,26 +16,26 @@ func NewRobotController(xAxis, yAxis int, face string) *RobotController{
 	return &RobotController{robot: newRobot}
 }
 
-func (rc *RobotController) face(facing Facer){
+func (rc *RobotController) Face(facing Facer){
 	rc.facing = facing
-	rc.facing.face(rc.robot.facing)
+	rc.facing.Face(rc.robot.facing)
 }
 
-func (rc *RobotController) move(moving Mover){
+func (rc *RobotController) Move(moving Mover){
 	rc.moving = moving
-	rc.moving.move(rc.robot)
+	rc.moving.Move(rc.robot)
 }
 
 func (rc *RobotController) doCommand(cmd string){
-	if IsFacingCommand(cmd){
+	if util.IsFacingCommand(cmd){
 		if cmd == "R"{
-			rc.face(&FaceRight{})
+			rc.Face(&FaceRight{})
 		}else if cmd == "L"{
-			rc.face(&FaceLeft{})
+			rc.Face(&FaceLeft{})
 		}
-	}else if IsMoveCommand(cmd){
+	}else if util.IsMoveCommand(cmd){
 		if cmd == "A"{
-			rc.move(&MoveAdvance{})
+			rc.Move(&MoveAdvance{})
 		}
 	}
 }
