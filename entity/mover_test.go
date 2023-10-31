@@ -3,20 +3,22 @@ package entity_test
 import (
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"git.garena.com/sea-labs-id/bootcamp/batch-02/ziad-rahmatullah/go-robot-simulator-exercise/entity"
 	"git.garena.com/sea-labs-id/bootcamp/batch-02/ziad-rahmatullah/go-robot-simulator-exercise/event"
-	"github.com/stretchr/testify/assert"
 )
 
-func TestNewRobot(t *testing.T) {
-	t.Run("should return not Nil wen call", func(t *testing.T) {
-		xAxis, yAxis := 1,1
-		direction := "N"
+func TestMove(t *testing.T) {
+	t.Run("should return different robot when call Move", func(t *testing.T) {
+		xAxis, yAxis, face := 1, 1, "N"
 		cordinate := event.NewCordinate(xAxis, yAxis)
-		facing := event.NewFacing(direction)
-
+		facing := event.NewFacing(face)
 		robot := entity.NewRobot(cordinate, facing)
+		mover := entity.MoveAdvance{}
 
-		assert.NotNil(t, robot)
+		result := mover.Move(robot)
+
+		assert.NotEqual(t, robot, result)
 	})
+
 }

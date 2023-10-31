@@ -39,7 +39,7 @@ func (f *Facing) MinusDirection() {
 }
 
 func (f *Facing) FirstDirection() {
-	f.direction = 1
+	f.direction = North
 }
 
 func (f *Facing) LastDirection() {

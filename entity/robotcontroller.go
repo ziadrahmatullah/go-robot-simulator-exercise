@@ -16,12 +16,12 @@ func NewRobotController(xAxis, yAxis int, face string) *RobotController{
 	return &RobotController{robot: newRobot}
 }
 
-func (rc *RobotController) Face(facing Facer){
+func (rc *RobotController) face(facing Facer){
 	rc.facing = facing
 	rc.facing.Face(rc.robot.facing)
 }
 
-func (rc *RobotController) Move(moving Mover){
+func (rc *RobotController) move(moving Mover){
 	rc.moving = moving
 	rc.moving.Move(rc.robot)
 }
@@ -29,13 +29,13 @@ func (rc *RobotController) Move(moving Mover){
 func (rc *RobotController) doCommand(cmd string){
 	if util.IsFacingCommand(cmd){
 		if cmd == "R"{
-			rc.Face(&FaceRight{})
+			rc.face(&FaceRight{})
 		}else if cmd == "L"{
-			rc.Face(&FaceLeft{})
+			rc.face(&FaceLeft{})
 		}
 	}else if util.IsMoveCommand(cmd){
 		if cmd == "A"{
-			rc.Move(&MoveAdvance{})
+			rc.move(&MoveAdvance{})
 		}
 	}
 }
